@@ -3,7 +3,7 @@
 for FILE in *xtc
 do
     NAME=`echo "$FILE" | cut -d'.' -f1` #separate file name and extension
-	EXTENSION=`echo "$FILE" | cut -d'.' -f2`
+    EXTENSION=`echo "$FILE" | cut -d'.' -f2`
     tput setaf 3; tput bold
     echo "INPUT TRAJECTORY:   " $FILE
     tput sgr0
