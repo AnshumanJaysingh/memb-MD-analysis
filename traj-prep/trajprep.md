@@ -12,4 +12,4 @@ parm.save('/path/to/top/output/output.top', format='gromacs')
 parm.save('/path/to/output/gro/file/output.gro')
 ```
 
-One can also use the [mdconvert](https://mdtraj.org/1.9.4/mdconvert.html) for some of the same functionality but be cautioned that mdconvert has limited compatibility with modern amber file types 
+One can also use the [mdconvert](https://mdtraj.org/1.9.4/mdconvert.html) for some of the same functionality but be cautioned that mdconvert has limited compatibility with modern amber file types.
