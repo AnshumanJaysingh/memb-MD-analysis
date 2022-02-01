@@ -66,7 +66,7 @@ do
     for csvfile in $NAME/thickness-csv/*csv
     do
         csvname=`echo "$csvfile" | cut -d'.' -f1`
-    	frame=`echo "$csvname" | cut -d'_' -f3` 
+    	frame=`echo "$csvname" | rev | cut -d'_' -f1 | rev` 
 	    tput setaf 3; echo "processing FRAME :" $frame; tput sgr0
         python3 plot-thickness-clim.py $csvfile input_file.gro $NAME/thickness-figs/$frame.png $frame
         
@@ -114,7 +114,7 @@ do
     for csvfile in $NAME/apl-csv/*csv
     do
         csvname=`echo "$csvfile" | cut -d'.' -f1`
-    	frame=`echo "$csvname" | cut -d'_' -f3` 
+    	frame=`echo "$csvname" | rev | cut -d'_' -f1 | rev` 
 	    tput setaf 3; echo "processing FRAME :" $frame; tput sgr0
         python3 plot-apl-clim.py $csvfile input_file.gro $NAME/apl-figs/$frame.png $frame
         
