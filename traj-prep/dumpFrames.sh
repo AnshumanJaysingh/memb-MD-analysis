@@ -12,7 +12,7 @@ do
    echo "INPUT TRAJECTORY:   " $NAME
    tput sgr0
 
-    printf '29\n' | gmx trjconv -n $index -s $topology -f $FILE -o dump/$NAME.pdb -dump 0
+    printf '0\n' | gmx trjconv -s $topology -f $FILE -o dump/$NAME.pdb -dump 0
     # terminal input as 26 to select non-water
 
 done
