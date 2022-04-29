@@ -2,7 +2,7 @@
 
 #Put the opology (gro) file, trajectory (xtc) files and this script in the same folder 
 
-TOP=$input_file.gro #set topologu file name
+TOP=$input_file.gro #set topology file name
 setFramesAnim=30
 
 mkdir -p PCA
