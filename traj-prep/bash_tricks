@@ -1,0 +1,30 @@
+##Add leading zeros to file name
+ls -v | awk -Fnpt '{printf "%s%06d.nc\n", "mv "$0" "$1"", $2}' 
+ls -v | awk -Feq '{printf "%s%06d.nc\n", "mv "$0" "$1"", $2}' 
+ls -v | awk -Feq '{printf "%s%06d.nc\n", "mv "$0" "$1"", $2}' | sh
+
+
+##amber to gromacs
+cpptraj -p sys.gro -y npt1-125_merged.nc -x traj1-125.xtc
+cpptraj -p step5_input.parm7 -y npt1-125_merged.nc -x traj1-125.xtc
+mdconvert https://mdtraj.org/1.9.4/mdconvert.html
+
+##Combining multiple trajectory and remove water
+parm topology-file.prmtop
+trajin trajectory*.nc 1 last 10 
+autoimage
+strip :WAT
+trajout nowater.nc
+go
+
+TO STRIP PARM
+parm topology-file.prmtop
+parmstrip :WAT
+parmwrite out topology-no_water.prmtop
+go
+
+##Rename and concatenate
+ls -v *dat | awk -FRDF_HeavyPro_WAT_1nm_ '{printf "%s%06d.dat\n", "mv "$0" "$1"", $2}' 
+ulimit -Hn 10240
+ulimit -Sn 10240
+paste *dat > multi_1935.txt
